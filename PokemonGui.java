@@ -76,7 +76,7 @@ public class PokemonGui extends JFrame {
         
         select = new JButton("SelectPokemon:");
      //******************************************   
-        printProperty.setText('\n' +"- - - - - - - - - - W E L C O M E - - - - - - - - - " +'\n' +'\n' +'\n' +"SelectPokemon NOW!!!!!!! ====> >> ");
+      printProperty.setText('\n' +"- - - - - - - - - - W E L C O M E - - - - - - - - - " +'\n' +'\n' +'\n' +"SelectPokemon NOW!!!!!!! ====> >> ");
      //******************************************
      eat = new JButton("Eat");
      exercise = new JButton("Exercise");
@@ -186,7 +186,36 @@ public class PokemonGui extends JFrame {
                 
         });
         
-        
+        battle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (selectPokemon.getSelectedIndex()) {
+                    
+                
+                         case 1:
+                         pokemonIcon.setIcon(chamanderIcon);
+                         pokemons.get(memberChamander).reducedHealth( pokemons.get(memberChamander).getHealth());
+                         printProperty.setText(printPokemons(pokemons,memberChamander));
+                        
+                          break;
+                          
+                         case 2:
+                         pokemonIcon.setIcon(eeveeIcon);
+                          pokemons.get(memberEevee).reducedHealth((int) pokemons.get(memberEevee).getHealth());
+                         printProperty.setText(printPokemons(pokemons,memberEevee));
+                          break;
+                         
+                         case 3: 
+                         pokemonIcon.setIcon(picachuIcon);
+                          pokemons.get(memberPicachu).reducedHealth((int) pokemons.get(memberPicachu).getHealth());
+                         printProperty.setText(printPokemons(pokemons,memberPicachu));
+                          break;
+                          default:
+                          break;
+                    } 
+            }
+                
+        });
         
         
 
