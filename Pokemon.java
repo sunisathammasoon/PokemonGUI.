@@ -35,11 +35,11 @@ abstract class Pokemon {
 		return this.weight;
 	}
 	
-	public void eat( int weight){
-              this.weight++;
-            
-                
-        }
+	public void eat(Berry berry){
+		this.weight += berry.getRestoreValue();
+		
+	}     
+        
         public void exercise( int weight){
               this.weight--; 
                if(this.weight < 0)
