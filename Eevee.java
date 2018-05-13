@@ -13,7 +13,7 @@ public class Eevee extends Pokemon implements Runnable {
     private static final int maxGroupHealth = 220;
     public Eevee(){
         super("Eevee",
-		      (int)(Math.random()*1000) % (maxGroupHealth+1),8);
+		      (int)(Math.random()*1000) % (maxGroupHealth+1),10);
 
 		this.attackSkill = PokemonSkill.getPokemonSkill("Quick attack");
 		this.untimatedSkill = PokemonSkill.getPokemonSkill("Tackle");

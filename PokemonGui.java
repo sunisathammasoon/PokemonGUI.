@@ -38,19 +38,32 @@ public class PokemonGui extends JFrame {
     JTextArea printProperty;
     int memberChamander,memberPicachu,memberEevee;
     
-       public static String printPokemons(ArrayList<Pokemon> pokemons,int member){
+    
+       public static String printPokemonshp(ArrayList<Pokemon> pokemons,int member){
         String hp = "======== Pokemon List ======== \n"+"Pokemon "+
                 pokemons.get(member).getName()+" health: "+pokemons.get(member).getHealth()
                 +"/"+pokemons.get(member).maxHealth;
-        String weight = "\n======== Pokemon Weight ======== \n"+" Weight: "+
+        return hp;
+       }
+       public static String printPokemonsweight(ArrayList<Pokemon> pokemons,int member){
+        String weight = "\n=======Weight After eat========= \n"+" Weight: "+
                 pokemons.get(member).getWeight();
+        return weight;
+       }
+        public static String printPokemonstotal(ArrayList<Pokemon> pokemons,int memberhp,int memberweight){
+        String hp = "======== Pokemon List ======== \n"+"Pokemon "+
+                pokemons.get(memberhp).getName()+" health: "+pokemons.get(memberhp).getHealth()
+                +"/"+pokemons.get(memberhp).maxHealth;
+        
+            String weight = "\n======== Pokemon Weight ======== \n"+" Weight: "+
+                pokemons.get(memberweight).getWeight();
         return hp+weight;
-    }
+       }
        
          public void eatBerry(int mumber){
-            Berry berry = new Berry(mumber);
+            Berry berry = new Berry(0);
             pokemons.get(mumber).eat(berry);
-            printProperty.setText(printPokemons(pokemons,mumber));
+            printProperty.setText(printPokemonstotal(pokemons,selectPokemon.getSelectedIndex(),mumber));
     }
        
        
@@ -117,20 +130,22 @@ public class PokemonGui extends JFrame {
                          case 1:
                          pokemonIcon.setIcon(chamanderIcon);
                          memberChamander = 0;
-                         printProperty.setText(printPokemons(pokemons,memberChamander));
-                        
+                         printProperty.setText(printPokemonstotal(pokemons,memberChamander,memberChamander));
+                    
                           break;
                           
                          case 2:
                          pokemonIcon.setIcon(eeveeIcon);
                          memberEevee = 1;
-                         printProperty.setText(printPokemons(pokemons,memberEevee));
+                         printProperty.setText(printPokemonstotal(pokemons,memberEevee,memberEevee));
+                    
                           break;
                          
                          case 3: 
                          pokemonIcon.setIcon(picachuIcon);
                          memberPicachu = 2;
-                         printProperty.setText(printPokemons(pokemons,memberPicachu));
+                         printProperty.setText(printPokemonstotal(pokemons,memberPicachu,memberEevee));
+                        
                           break;
                           default:
                           break;
@@ -140,40 +155,29 @@ public class PokemonGui extends JFrame {
         });
         
         
-        eat.addActionListener(new ActionListener() {
+        selectBerry.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (selectBerry.getSelectedIndex()) {
                     
-                    
-                      
-                         
                          case 1:
-                         totalberryIcon.setIcon(berryIcon);
-                            if(selectPokemon.getSelectedIndex()==1)
+                       totalberryIcon.setIcon(berryIcon);
+                       if(selectPokemon.getSelectedIndex()==1)
                                  pokemonIcon.setIcon(eatChamanderIcon);
                             else if(selectPokemon.getSelectedIndex()==2)
                                  pokemonIcon.setIcon(eatEeveeIcon);
                             else if(selectPokemon.getSelectedIndex()==3)
                                  pokemonIcon.setIcon(eatPicachuIcon);
-                            
-                         eatBerry(memberChamander);
-                         //pokemons.get(memberChamander).eat((int) pokemons.get(memberChamander).getWeight());
-                       //  printProperty.setText(printPokemons(pokemons,memberChamander));
-                        
                           break;
                           
-                         case 2:
+                         case 2:;
                          totalberryIcon.setIcon(goldberryIcon);
-                         if(selectPokemon.getSelectedIndex()==1)
+                           if(selectPokemon.getSelectedIndex()==1)
                                  pokemonIcon.setIcon(eatChamanderIcon);
                             else if(selectPokemon.getSelectedIndex()==2)
                                  pokemonIcon.setIcon(eatEeveeIcon);
                             else if(selectPokemon.getSelectedIndex()==3)
                                  pokemonIcon.setIcon(eatPicachuIcon);
-                         eatBerry(memberEevee);
-                         // pokemons.get(memberEevee).eat((int) pokemons.get(memberEevee).getWeight());
-                        // printProperty.setText(printPokemons(pokemons,memberEevee));
                           break;
                          
                          case 3: 
@@ -184,9 +188,31 @@ public class PokemonGui extends JFrame {
                                  pokemonIcon.setIcon(eatEeveeIcon);
                             else if(selectPokemon.getSelectedIndex()==3)
                                  pokemonIcon.setIcon(eatPicachuIcon);
+ 
+                          break;
+                          default:
+                          break;
+                    } 
+            }
+                
+        });
+         eat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (selectBerry.getSelectedIndex()) {
+                    
+                         case 1:                       
+                          eatBerry(memberChamander);
+                         
+                          break;
+  
+                         case 2:;
+                         eatBerry(memberEevee);
+                          break;
+                         
+                         case 3: 
                          eatBerry(memberPicachu);
-                        //  pokemons.get(memberPicachu).eat((int) pokemons.get(memberPicachu).getWeight());
-                        // printProperty.setText(printPokemons(pokemons,memberPicachu));
+ 
                           break;
                           default:
                           break;
@@ -204,20 +230,20 @@ public class PokemonGui extends JFrame {
                          case 1:
                          pokemonIcon.setIcon(chamanderIcon);
                          pokemons.get(memberChamander).exercise((int) pokemons.get(memberChamander).getWeight());
-                         printProperty.setText(printPokemons(pokemons,memberChamander));
+                         printProperty.setText(printPokemonstotal(pokemons,memberChamander,memberChamander));
                         
                           break;
                           
                          case 2:
                          pokemonIcon.setIcon(eeveeIcon);
                           pokemons.get(memberEevee).exercise((int) pokemons.get(memberEevee).getWeight());
-                         printProperty.setText(printPokemons(pokemons,memberEevee));
+                         printProperty.setText(printPokemonstotal(pokemons,memberEevee,memberEevee));
                           break;
                          
                          case 3: 
                          pokemonIcon.setIcon(picachuIcon);
                           pokemons.get(memberPicachu).exercise((int) pokemons.get(memberPicachu).getWeight());
-                         printProperty.setText(printPokemons(pokemons,memberPicachu));
+                         printProperty.setText(printPokemonstotal(pokemons,memberPicachu,memberPicachu));
                           break;
                           default:
                           break;
@@ -235,20 +261,20 @@ public class PokemonGui extends JFrame {
                          case 1:
                          pokemonIcon.setIcon(chamanderIcon);
                          pokemons.get(memberChamander).reducedHealth( pokemons.get(memberChamander).getHealth());
-                         printProperty.setText(printPokemons(pokemons,memberChamander));
+                         printProperty.setText(printPokemonstotal(pokemons,memberChamander,memberChamander));
                         
                           break;
                           
                          case 2:
                          pokemonIcon.setIcon(eeveeIcon);
                           pokemons.get(memberEevee).reducedHealth((int) pokemons.get(memberEevee).getHealth());
-                         printProperty.setText(printPokemons(pokemons,memberEevee));
+                         printProperty.setText(printPokemonstotal(pokemons,memberEevee,memberEevee));
                           break;
                          
                          case 3: 
                          pokemonIcon.setIcon(picachuIcon);
                           pokemons.get(memberPicachu).reducedHealth((int) pokemons.get(memberPicachu).getHealth ());
-                         printProperty.setText(printPokemons(pokemons,memberPicachu));
+                         printProperty.setText(printPokemonstotal(pokemons,memberPicachu,memberPicachu));
                           break;
                           default:
                           break;

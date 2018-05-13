@@ -21,7 +21,7 @@ public class Chamander extends Pokemon implements Swimmable{
 	private static final int maxGroupHealth = 270;
 	public Chamander(){
 		super("Chamander",
-		      (int)(Math.random()*1000) % (maxGroupHealth+1),10);
+		      (int)(Math.random()*1000) % (maxGroupHealth+1),15);
 
 		this.attackSkill = PokemonSkill.getPokemonSkill("Tail Whip");
 		this.untimatedSkill = PokemonSkill.getPokemonSkill("Water Pulse");
