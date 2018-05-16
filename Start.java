@@ -9,11 +9,11 @@ package pokemongamee;
  *
  * @author ASUS-PC
  */
-public class Eevee extends Pokemon implements Runnable {
-    private static final int maxGroupHealth = 220;
-    public Eevee(){
-        super("Eevee",
-		      (int)(Math.random()*1000) % (maxGroupHealth+1),10);
+public class Start extends Pokemon implements Runnable {
+    private static final int maxGroupHealth = 0;
+    public Start(){
+        super("XXXXXXXXXXX",
+		      0,0);
 
 		this.attackSkill = PokemonSkill.getPokemonSkill("Quickattack");
 		this.untimatedSkill = PokemonSkill.getPokemonSkill("Tackle");

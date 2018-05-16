@@ -30,17 +30,25 @@ public class PokemonSkill {
 		PokemonSkill skill = null;
 		switch(name.toLowerCase()){
 			case "thunder shock":
-				skill = new PokemonSkill("Thunder Shock", 40);
+				skill = new PokemonSkill("Thunder Shock", 10);
 				break;
 			case "thunderbolt":
-				skill = new PokemonSkill("Thunderbolt", 90);
+				skill = new PokemonSkill("Thunderbolt", 30);
 				break;
 			case "tail whip":
 				skill = new PokemonSkill("Tail Whip", 10);
 				break;
-			case "Water Pulse":
-				skill = new PokemonSkill("Water Pulse", 100);
+			case "water pulse":
+				skill = new PokemonSkill("Water Pulse", 30);
 				break;
+                        
+                        case "quickattack":
+				skill = new PokemonSkill("Quickattack", 10);
+				break;
+                          case "tackle":
+				skill = new PokemonSkill("Tackle", 30);
+				break;      
+                                
 		}
 		return skill;
 	}
